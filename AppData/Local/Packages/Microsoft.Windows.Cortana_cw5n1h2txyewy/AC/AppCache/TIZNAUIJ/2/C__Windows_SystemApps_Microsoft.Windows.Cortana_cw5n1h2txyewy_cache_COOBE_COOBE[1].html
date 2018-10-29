@@ -1,0 +1,323 @@
+﻿<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:web="http://schemas.live.com/Web/" manifest="/manifest/COOBE.appcache">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <title>COOBE</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            margin: 0;
+            font: 15px 'Segoe UI',Arial,Helvetica,Sans-Serif;
+            font-weight: normal;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table, tr, td {
+            margin: 0;
+            padding: 0;
+        }
+
+        .subHeader {
+            font-size: 34px;
+            font-weight: lighter;
+        }
+
+        .button {
+            width: 100%;
+            background-color: #0078d7;
+            border-color: #0078d7;
+            border-style: solid;
+            color: #fff;
+            cursor: pointer;
+            padding: 5px 0;
+            text-decoration: none;
+            text-align: center;
+            font: 15px 'Segoe UI',Arial,Helvetica,Sans-Serif;
+            font-weight: normal;
+            margin: 0;
+        }
+
+        .subtleButton {
+            background-color: #ccc;
+            border-color: #cccccc;
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        .subtleText {
+            color: rgba(0, 0, 0, 0.6);
+        }
+    </style>
+    <script type='text/javascript'>
+        //<![CDATA[
+        var LocStringManager;
+        (function (LocStringManager) {
+            var namespaceMap = {};
+            var parentCultureResolver = {
+                parentParentCultureResolver: null,
+                resolveCulture: function (culture) {
+                    if (!culture) {
+                        throw invalidArgumentException("culture", culture);
+                    }
+                    var indexOfDash = culture.lastIndexOf("-");
+                    if (indexOfDash > 0) {
+                        return culture.substring(0, indexOfDash);
+                    }
+                    return "";
+                }
+            };
+            function register(locStringKey, locString) {
+                if (!locStringKey) {
+                    throw invalidArgumentException("locStringKey", locStringKey);
+                }
+                if (!locString) {
+                    throw invalidArgumentException("locString", locString);
+                }
+                var namespace = locStringKey.namespace;
+                var nameMap = getNameMap(namespace) || createNameMap(namespace);
+                var name = locStringKey.name;
+                var uiCultureMap = getUiCultureMap(name, nameMap) || createUiCultureMap(name, nameMap);
+                addStringToCultureMap(locStringKey.uiCulture, locString, uiCultureMap);
+            }
+            LocStringManager.register = register;
+            function getLocString(locStringKey) {
+                if (!locStringKey) {
+                    throw invalidArgumentException("locStringKey", locStringKey);
+                }
+                var namespace = locStringKey.namespace;
+                var nameMap = getNameMap(namespace);
+                if (!nameMap) {
+                    throw new Error("namespace " + namespace + " is not registered");
+                }
+                var name = locStringKey.name;
+                var uiCultureMap = getUiCultureMap(name, nameMap);
+                if (!uiCultureMap) {
+                    throw new Error("name " + name + " is not registered in namespace " + namespace);
+                }
+                var uiCulture = locStringKey.uiCulture;
+                var locString;
+                while (!locString) {
+                    locString = getStringFromCultureMap(uiCulture, uiCultureMap);
+                    if (!locString && !uiCulture) {
+                        throw new Error("the invariant empty culture does not have parent");
+                    }
+                    else if (!locString) {
+                        uiCulture = parentCultureResolver.resolveCulture(uiCulture);
+                    }
+                }
+                return locString;
+            }
+            LocStringManager.getLocString = getLocString;
+            function addParentCultureResolver(newParentCultureResolver) {
+                if (!newParentCultureResolver) {
+                    throw invalidArgumentException("newParentCultureResolver", newParentCultureResolver);
+                }
+                newParentCultureResolver.parentParentCultureResolver = parentCultureResolver;
+                parentCultureResolver = newParentCultureResolver;
+            }
+            LocStringManager.addParentCultureResolver = addParentCultureResolver;
+            function getNameMap(namespace) {
+                if (!namespace) {
+                    throw invalidArgumentException("namesapce", namespace);
+                }
+                return namespaceMap[namespace];
+            }
+            function createNameMap(namespace) {
+                if (!namespace) {
+                    throw invalidArgumentException("namespace", namespace);
+                }
+                return (namespaceMap[namespace] = {});
+            }
+            function getUiCultureMap(name, nameMap) {
+                if (!name) {
+                    throw invalidArgumentException("name", name);
+                }
+                return nameMap[name];
+            }
+            function createUiCultureMap(name, nameMap) {
+                if (!name) {
+                    throw invalidArgumentException("name", name);
+                }
+                return (nameMap[name] = {});
+            }
+            function addStringToCultureMap(uiCultureKey, locString, uiCultureMap) {
+                if (typeof (uiCultureKey) === "undefined" || uiCultureKey === null) {
+                    throw invalidArgumentException("uiCultureKey", uiCultureKey);
+                }
+                if (uiCultureMap) {
+                    uiCultureMap[uiCultureKey.toLowerCase()] = locString;
+                }
+            }
+            function getStringFromCultureMap(uiCultureKey, uiCultureMap) {
+                if (typeof (uiCultureKey) === "undefined" || uiCultureKey === null) {
+                    throw invalidArgumentException("uiCultureKey", uiCultureKey);
+                }
+                if (uiCultureMap) {
+                    return uiCultureMap[uiCultureKey.toLowerCase()];
+                }
+                return null;
+            }
+            function invalidArgumentException(argumentName, argumentValue) {
+                return new Error("Invalid Argument: " + argumentName + "=" + argumentValue.toString());
+            }
+        })(LocStringManager || (LocStringManager = {}));
+
+        // Register all language strings
+        (function (n, t) {
+            function i(n, t) {
+                return LocStringManager.register({
+                    uiCulture: n, name: "CortanaCOOBE", namespace: "COOBE"
+                }, {
+                    Header: t[0], Intro: t[1], CortanaPersonaText: t[2], ConsentText: t[3], PrivacyStatement: t[4], NoThanks: t[5], UseCortana: t[6]
+                }), i
+            }
+            return i(n, t)
+        })
+        ("en", [
+            "Meet Cortana, your Super Assistant",
+            "She's your searcher, finder, weather watcher, plan-aheader, and animal impersonator.",
+            "Hi, I'm Cortana,<br/>I'm here to help you get things done.",
+            "To let Cortana do her best work, she'll need access to your location and location history, contacts, voice input, searching history, calendar details, content and communication history from messages and apps, browsing history from Microsoft Edge, and other information on your device. You can always tinker with what Cortana remembers in the Notebook, disable Cortana in Microsoft Edge, or turn Cortana off entirely.",
+            "Privacy Statement",
+            "No thanks",
+            "Use Cortana"
+        ])
+        ("fr", [
+            "Découvrez Cortana, votre super assistante",
+            "Elle est votre outil de recherche, observatrice de météo, organisatrice et imitatrice d’animaux.",
+            "Bonjour, je suis Cortana.<br/>Je suis là pour vous simplifier la tâche.",
+            "Pour que Cortana réponde au mieux à vos demandes, Microsoft collecte et utilise certaines informations depuis votre appareil : localisation, historique des emplacements, contacts, entrée vocale, historique de recherche, détails du calendrier, historique des communications et contenus depuis les messages et applications, entre autres. Dans Microsoft Edge, Cortana collecte et utilise votre historique de navigation. Vous pouvez toujours ajuster ce que Cortana mémorise dans le Carnet de notes, la désactiver dans Microsoft Edge ou complètement.",
+            "Déclaration de confidentialité",
+            "Non, merci",
+            "Utiliser Cortana"
+        ])
+        ("it", [
+            "Scopri Cortana, la tua super-assistente",
+            "È la tua aiutante, ricercatrice, meteorologa, esperta di pianificazione nonchè imitatrice di animali.",
+            "Ciao, sono Cortana<br/>e il mio scopo è aiutarti per le tue attività.",
+            "Per ottimizzare il funzionamento di Cortana, Microsoft raccoglie e usa informazioni come la tua posizione e la cronologia delle posizioni, i contatti, l'input vocale, la cronologia delle ricerche, i dettagli del calendario, la cronologia di contenuto e comunicazioni da messaggi e app e altre informazioni nel tuo dispositivo. In Microsoft Edge, Cortana raccoglie e usa la tua cronologia di esplorazione. Puoi sempre decidere cosa memorizza Cortana negli Appunti, disabilitare Cortana in Microsoft Edge o disattivare del tutto Cortana.",
+            "Informativa sulla privacy",
+            "No, grazie",
+            "Usar Cortana"
+        ])
+        ("de", [
+            "Dürfen wir vorstellen: Cortana, deine persönliche Assistentin",
+            "Sie steht dir als Lexikon, Wetterdienst, Organisationstalent und als Tierstimmen-Imitator zur Verfügung.",
+            "Hallo, ich bin Cortana.<br/>Ich kann dir helfen, viele Dinge zu erledigen.",
+            "Damit Cortana optimal arbeitet, erfasst und nutzt Microsoft Informationen wie Position und Positionsverlauf, Kontakte, Spracheingaben, Suchverlauf, Kalenderdetails, Inhalte und Kommunikationsverlauf aus Nachrichten und Apps sowie weitere Informationen auf deinem Gerät. In Microsoft Edge sammelt und verwendet Cortana Daten aus dem Browserverlauf. Probiere einfach aus, was sich Cortana im Notizbuch merken kann. Du kannst Cortana auch in Microsoft Edge deaktivieren oder vollständig ausschalten.",
+            "Datenschutzbestimmungen",
+            "Nein, danke",
+            "Verwende Cortana"
+        ])
+        ("es", [
+            "Descubre Cortana, tu mejor asistente",
+            "Ella es quien busca, encuentra, vigila el tiempo, planifica e incluso imita animales.",
+            "Hola, soy Cortana.<br/>Estoy aquí para ayudarte a realizar las tareas.",
+            "Para obtener lo mejor de Cortana, Microsoft recopila y usa información, incluida tu ubicación e historial de ubicaciones, contactos, entradas de voz, historial de búsqueda, detalles del calendario, historial de contenido y comunicaciones de los mensajes y las aplicaciones, así como otra información almacenada en tu dispositivo. En Microsoft Edge, Cortana recopila y usa tu historial de exploración. Siempre puedes configurar lo que Cortana recuerda en el Cuaderno, deshabilitar Cortana en Microsoft Edge o desactivarla por completo",
+            "Declaración de privacidad",
+            "No, gracias",
+            "Usar Cortana"
+        ])
+        ("zh", [
+            "了解 Cortana，你的超级助理",
+            "她是你的信息搜索者、应用查找者、天气预报员、计划制定者以及动物模仿者。",
+            "你好，我是 Cortana。<br/>我在这里为你效劳。",
+            "为了改进 Cortana 的工作，Microsoft 会收集和使用各种信息，其中包括你的位置和位置历史记录、联系人、语音输入、搜索历史记录、日历详细信息、邮件和应用中的内容和通信历史记录，以及设备上的其他信息。在 Microsoft Edge 中，Cortana 会收集和使用你的浏览历史记录。你始终可以在笔记本中对需要 Cortana 记忆的内容进行调整，在 Microsoft Edge 中禁用 Cortana，或者彻底关闭 Cortana。",
+            "隐私声明",
+            "不，谢谢",
+            "使用 Cortana"
+        ])
+        ("ja", [
+            "Cortanaはあなたにぴったり寄り添うパーソナルアシスタントです",
+            "彼女はあなたのリサーチ担当であり、気象予報士であり、秘書です。アラームをセットしたり、動物の鳴きまねをすることもできます。",
+            "こんにちは、Cortanaです。<br/>お手伝いできることがあればおっしゃってください。",
+            "Cortanaが効果的にお役に立てるように、Microsoftでは、あなたの位置情報や場所の履歴、連絡先、音声入力、検索履歴、カレンダーの詳細、メッセージやアプリからのコンテンツおよび通信の履歴、ご使用のデバイスに関するその他の情報を収集して利用します。Microsoft Edgeでは、Cortanaが閲覧履歴を収集して利用します。ただし、Cortanaが記憶する情報をノートブックで編集したり、Microsoft Edge上でCortanaを無効にしたり、Cortanaを完全にオフにしたりすることが、いつでもできます。",
+            "プライバシーに関する声明",
+            "キャンセル",
+            "Cortanaを使用"
+        ])
+
+        function bodyOnload() {
+            window.applicationCache.addEventListener('updateready', function (e) {
+                if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+                    if (CortanaApp.currentState != 2 /* WebViewLifetimeState.WebViewVisible */) {
+                        CortanaApp.reloadWebViewAsync();
+                    }
+                }
+            }, false);
+
+            var locStrings;
+            try {
+                locStrings = LocStringManager.getLocString({ uiCulture: CortanaApp.uiLanguage, name: "CortanaCOOBE", namespace: "COOBE" });
+            } catch (e) {
+                locStrings = LocStringManager.getLocString({ uiCulture: "en", name: "CortanaCOOBE", namespace: "COOBE" });
+            }
+            if (locStrings) {
+                header.innerHTML = locStrings.Header;
+                intro.innerHTML = locStrings.Intro;
+                cortanaPersonaText.innerHTML = locStrings.CortanaPersonaText;
+                consentText.innerHTML = locStrings.ConsentText;
+                privacyStatement.innerHTML = locStrings.PrivacyStatement;
+                optOutButton.innerHTML = locStrings.NoThanks;
+                optInButton.innerHTML = locStrings.UseCortana;
+            }
+
+            CortanaApp.getQueryHeadersAsync().done(function (headers) {
+                var accentColor;
+                var value = headers["X-BM-Theme"];
+                if (value) {
+                    accentColor = "#" + value.split(";")[1];
+                }
+                cortanaAnimationFloodFilter.setAttribute('flood-color', accentColor);
+                optInButton.style.backgroundColor = accentColor;
+                optInButton.style.borderColor = accentColor;
+            });
+        }
+        //]]>
+    </script>
+</head>
+<body onload='bodyOnload();'>
+    <div id='scrollerHost' style='height: calc(100% - 90px);'>
+        <div id='scroller' style='height: 100%; overflow: auto;'>
+            <div id='scrollerContent' style='margin: 12px 12px 0 12px;'>
+                <div id='header' class='subHeader'></div>
+                <div id='intro' class='subtleText' style='margin: 24px 0;'></div>
+                <div style='text-align: center;'>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="90" height="90">
+                        <defs>
+                            <filter id="colorMask">
+                                <feFlood id='cortanaAnimationFloodFilter' result="flood" />
+                                <feComposite in="SourceGraphic" in2="flood" operator="arithmetic" k1="1" k2="0" k3="0" k4="0" />
+                            </filter>
+                        </defs>
+                        <image width="100%" height="100%" xlink:href="CortanaIcon.png" filter="url(#colorMask)" />
+                    </svg>
+                    <br/>
+                    <div id='cortanaPersonaText' style='margin: 7px 0 0 0;'></div>
+                </div>
+                <div id='consentText' class='subtleText' style='margin: 28px 0 0 0;'></div>
+            </div>
+        </div>
+    </div>
+    <div id='bottomHost' style='margin: 0 12px;'>
+        <div style='margin: 12px 0 0 0;'><a id='privacyStatement' href='javascript:CortanaApp.launcher.launchUriAsync("http://go.microsoft.com/fwlink/?LinkID=521839");'></a></div>
+        <table style='margin: 20px 0 0 0; width: 100%;'>
+            <tr>
+                <td style='width: 50%'>
+                    <div style='margin: 0 2px 0 0;'>
+                        <button id='optOutButton' class='button subtleButton' onclick='CortanaApp.coobeView.invokeLeftButton()'></button>
+                    </div>
+                </td>
+                <td style='width: 50%'>
+                    <div style='margin: 0 0 0 2px;'>
+                        <button id='optInButton' class='button' onclick='CortanaApp.coobeView.invokeRightButton()'></button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+﻿CACHE MANIFEST
+# Version:d03c1acc
+CACHE:
+/AS/API/WindowsCortanaCOOBE/V2/Init
+/AS/API/WindowsCortanaCOOBE/V2/CortanaIcon.png
+NETWORK:
+*

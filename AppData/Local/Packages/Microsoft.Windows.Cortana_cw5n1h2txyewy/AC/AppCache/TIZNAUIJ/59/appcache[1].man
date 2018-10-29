@@ -1,0 +1,30 @@
+CACHE MANIFEST
+# Version:4de73df7
+CACHE:
+/AS/API/WindowsCortanaPane/V2/Init
+/rb/14/cj,nj/ff71e3c4/e3f307cb.js?bu=DiUuWWltcWVdYaoBrgEungEu
+/rb/2s/cj,nj/e0fdaf02/4df532ad.js?bu=Ct8BxAKyArUCmQK6AuEByALLApwC
+/rb/G/cir,ortl,cc,nc/4e9faab5/47561697.css?bu=CM8GzQXfBuMGxgXGBcYFxgU
+/rb/G/cj,nj/37388303/9422b2d2.js?bu=G6YBgQKmAvsBhwKKAqgCsQKqAqwCqQGrAeYB6AGQAusBlwKeAqAC0AK0Av0BhgOEA-QBKCg
+/rb/G/cj,nj/c86a6017/3572b676.js?bu=FvsDxwLJAs0CywK7ArcCnAL0AfEBlQK9Ar8CkgL_AZsFlQWKA_4D1gL-AoAD
+/rb/G/cj,nj/f07b30a9/375f53aa.js?bu=Ha0ErwTGBMQE4QTfBN0EzgTQBMwEwAS-BMIEvAS6BOMEuASxBLMEyAQoKNIE1AQoKCgoKA
+/rms/BingCore.Bundle/cj,nj/bc8b2600/a0d3923c.js?bu=rms+answers+Shared+BingCore%24ClientInstV2%24DuplicateXlsDefaultConfig*BingCore%24ClientInstV2%24SharedLocalStorageConfigDefault*BingCore%24shared*BingCore%24env.override*Empty*BingCore%24event.custom.fix*BingCore%24event.native*BingCore%24dom*BingCore%24cookies_parserThreshold*BingCore%24XHRPrefetch%24rmsajax_xhrprefetch*BingCore%24ClientInstV2%24LogUploadCapFeatureDisabled*BingCore%24ClientInstV2%24ClientInstConfigSeparateQFQueue*BingCore%24ClientInstV2%24clientinst_xls*BingCore%24CoreUtilities*BingCore%24ClientInstV2%24LogHelper*BingCore%24ClientInstV2%24VisibilityChangeEventHelper*BingCore%24Animation*BingCore%24fadeAnimation*BingCore%24framework*BingCore%24ShowWebView*BingCore%24ClientInstV2%24LogOfflineFalseConfig*Empty*HitHighlighting%24HitHighlightingParser*BingCore%24ClientInstV2%24DataSourceLayoutManager*Threshold%24Threshold.Diagnostics.Prod*Threshold%24Threshold.UtilitiesM2
+/rms/BlueBrand/ortl,cc,nc/91028912/68b84d3a.css?bu=rms+answers+BrandBundle_Mobile+thbrand%24CombinedAsset_Windows_Gen1*thbrand%24Colors_Gen1*Colors_AnsSupp*SegoeFontFaces*thbrand%24Type_Gen1*TypeGroupLabelOverrides*thbrand%24Grid_Gen2*empty*empty
+/rms/BlueHeader/cir,ortl,cc,nc/9c0f8482/424a9e57.css?bu=rms+answers+BrandBundle_Mobile+empty*thbrand%24Header_Colors_Gen1*thbrand%24Header_Type*thbrand%24Header_Grid_Gen1*empty*empty
+/rs/2s/2G/ortl,cc,nc/11fd55c8/11ee0799.css
+/rs/2u/6/cj,nj/29ea4f27/e1e405d1.js
+/rs/5g/C/nj/8fe7be63/8636b4dd.js
+/rs/5g/k/nj/d9799f53/045d3532.js
+/rs/5S/H/cj,nj/7e516373/53c747e0.js
+/rs/6j/tq/ortl,cc,nc/d3857dc2/2743db28.css
+/rs/G/3a/cj,nj/2f89fda1/88bf6172.js
+/rs/G/3u/cj,nj/d12ce068/201f7711.js
+/rs/G/4b/cj,nj/7954d3b5/0fb74f11.js
+/rs/G/4I/cj,nj/a7a4c3ae/79d47a4a.js
+/rs/G/4y/cj,nj/e38ec6b6/298fad8a.js
+/rs/I/6/cj,nj/4c263ea8/ac80e0fd.js
+/rs/I/a/cj,nj/65a85031/8eb52603.js
+/rs/I/d/cj,nj/68c07415/765c950d.js
+/rs/z/9/cj,nj/92ab0027/0c3a2f0b.js
+NETWORK:
+*
